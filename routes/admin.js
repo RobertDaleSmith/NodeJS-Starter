@@ -62,7 +62,7 @@ Admin.prototype.login = function( req, res ) {
 
 	//Check if any admins have been created yet.
 	this._adminUsers.findAdmins({}, function (error, result) {
-		if( result.length <= 0 ) res.locals.adminZero = true;
+		if( result==undefined || result.length <= 0 ) res.locals.adminZero = true;
 		res.locals.title = 'Login';
 		res.locals.error = req.flash('error');
 		res.render('admin/login');
