@@ -17,3 +17,23 @@ Main.prototype.home = function( req, res, next ){
 	res.locals.randomVar = "look mom it passed to render";
 	res.render('index',  { title: "Title of your view", pageName: "home" });	
 };
+
+Main.prototype.login = function( req, res, next ){
+	res.locals.randomVar = "look mom it passed to render";
+	res.render('login',  { title: "Title of your view", pageName: "home" });	
+};
+
+Main.prototype.loginPost = function( req, res, next ){
+	res.locals.randomVar = "look mom it passed to render";
+	res.render('index',  { title: "Title of your view", pageName: "home" });	
+};
+
+Main.prototype.signup = function( req, res, next ){
+	res.locals.randomVar = "look mom it passed to render";
+	res.render('signup',  { title: "Title of your view", pageName: "home" });	
+};
+
+Main.prototype.signupPost = function( req, res, next ){
+	res.locals.randomVar = "look mom it passed to render";
+	res.render('index',  { title: "Title of your view", pageName: "home" });	
+};

@@ -112,6 +112,10 @@ mongo.connect(function(err) {
   });
 
   app.get( '/', function( req, res, next ) { routes.Main.home( req, res, next ); } );
+  app.get( '/login', function( req, res, next ) { routes.Main.login( req, res, next ); } );
+  app.post( '/login', function( req, res, next ) { routes.Main.loginPost( req, res, next ); } );
+  app.get( '/signup', function( req, res, next ) { routes.Main.signup( req, res, next ); } );
+  app.post( '/signup', function( req, res, next ) { routes.Main.signupPost( req, res, next ); } );
 
   //Uncomment and use to create admin password, then comment out.
   // app.get( '/createPwd/:pwd', function( req, res, next ) { routes.Admin.createPwd( req, res, next ); } );
