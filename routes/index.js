@@ -7,6 +7,8 @@ var async = require("async")
 var Index = function( mongo ) {
 	var self = this;
 	if( typeof mongo === 'undefined' ) { console.log( 'Index( undefined )!'); }
+	var EndUserMongo = require("../libs/EndUserMongo").EndUserMongo;
+	self._endUsers = new EndUserMongo( {mongo:mongo} );
 };
 
 exports.initIndex = function( mongo ){
@@ -22,14 +24,28 @@ Index.prototype.home = function( req, res ) {
 	});
 };
 
-Index.prototype.login = function( req, res, next ){
-	res.locals.randomVar = "look mom it passed to render";
-	res.render('login',  { title: "Title of your view", pageName: "home" });	
+Index.prototype.login = function( req, res, next ){	
+	var email = req.body('email');
+	var password = req.body('password');
+	if(email == null | email == '') { }
+	else {
+		this._endUsers.authenticate(email, password, function(err, user){
+			if(err) {
+				console.error(err.msg);
+				throw err;
+			}
+			else {
+				req.session.endUser = user;
+				req.session.loggedIn = true;
+			}
+		});
+	}
+	res.render('index/login',  { title: "Title of your view", pageName: "home" });	
 };
 
 Index.prototype.loginPost = function( req, res, next ){
 	res.locals.randomVar = "look mom it passed to render";
-	res.render('index',  { title: "Title of your view", pageName: "home" });	
+	
 };
 
 Index.prototype.signup = function( req, res, next ){
