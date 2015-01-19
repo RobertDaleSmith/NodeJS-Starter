@@ -350,7 +350,6 @@ Admin.prototype.logOut = function( req, res ) {
 	res.locals.admin = null;
   	res.locals.loggedIn = false;
 	res.redirect('/admin/login');
-
 };
 
 Admin.prototype.dashboard = function( req, res ){

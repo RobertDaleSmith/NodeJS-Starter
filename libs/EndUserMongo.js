@@ -20,16 +20,12 @@ var isEmpty = function (obj) {
 
 EndUserMongo.prototype.authenticate = function (username, password, callback) {
 	this.endUsers.findOne({username: username}, function (error, user) {
-		if (error !== null || user === null) {
+		if (error !== null || user === null || !bcrypt.compareSync(password, user.pwd)) {
 			return callback(new Error("Username and password did not match!"), null);
 		}
 
-		if (!bcrypt.compareSync(password, user.pwd)) {
-			return callback(new Error("Username and password did not match"));
-		}
-
 		callback(error, user);
-	})
+	});
 }
 
 EndUserMongo.prototype.findUsers = function( queryIn, callback ){
@@ -65,16 +61,16 @@ EndUserMongo.prototype.findUsers = function( queryIn, callback ){
 	});
 }
 
-EndUserMongo.prototype.addUser = function ( admin, callback ){
-	if (typeof (admin) === 'function') {
-		callback = admin;
-		admin = null;
+EndUserMongo.prototype.addUser = function ( user, callback ){
+	if (typeof (user) === 'function') {
+		callback = user;
+		user = null;
 		return callback("Missing arguments");
 	}
 
-	this.endUsers.insert( admin, {safe:true}, function (error, admins) {
+	this.endUsers.insert( user, {safe:true}, function (error, users) {
 		console.log(error);
-		console.log(admins);
-		callback(error, admins);
+		console.log(users);
+		callback(error, users);
 	});
 }
