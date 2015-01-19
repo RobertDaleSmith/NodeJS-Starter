@@ -1,0 +1,19 @@
+{>"layouts/main_index"/}
+
+{<title}{title}{/title}
+
+{<html_body}
+	<br>
+	<form method="POST" enctype="multipart/form-input">
+	{#error}<h4>{.}</h4>{/error}
+		<input placeholder="Username" name="user[username]" type="text">
+		<br><br>
+		<input placeholder="Password" name="user[password]" type="password">
+		<br>
+		<label>
+			<input name="user[remember]" type="checkbox" value="true" checked>Remember Me
+		</label>
+		<br><button type="submit">Login</button>
+	</form>
+	<a href="/signup">Don't have an account?</a><br>
+{/html_body}

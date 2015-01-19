@@ -5,7 +5,7 @@
 {<html_body}
 
 	<!-- index/home.dust -->
-	<br><a href="/login">LOGIN</a><br>
-	<br><a href="/signup">SIGNUP</a><br>
+	<br><a href="#">You're logged in!</a><br>
+	<br><a href="/logout">LOGOUT</a><br>
 
 {/html_body}

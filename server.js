@@ -115,7 +115,12 @@ mongo.connect(function(err) {
   //   next();
   // });
 
-  app.get( '/', function( req, res, next ) { routes.Index.home( req, res, next ); } );
+  app.get(  '/',       function( req, res, next ) { routes.Index.home( req, res, next ); } );
+  app.get(  '/login',  function( req, res, next ) { routes.Index.login( req, res, next ); } );  
+  app.post( '/login',  function( req, res, next ) { routes.Index.loginPost( req, res, next ); } );
+  app.get(  '/logout', function( req, res, next ) { routes.Index.logout( req, res, next ); } );
+  app.get(  '/signup', function( req, res, next ) { routes.Index.signup( req, res, next ); } );
+  app.post( '/signup', function( req, res, next ) { routes.Index.signupPost( req, res, next ); } );
 
   //Uncomment and use to create admin password, then comment out.
   // app.get( '/createPwd/:pwd', function( req, res, next ) { routes.Admin.createPwd( req, res, next ); } );
