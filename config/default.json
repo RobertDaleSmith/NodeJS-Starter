@@ -1,10 +1,10 @@
 {
   "dbConfig": {
-    "name"        : "dearyhudson_jr",
-    "url"         : "kahana.mongohq.com",
-    "port"        : "10091",
-    "username"    : "deary",
-    "password"    : "permi$$ion",
+    "name"        : "DEPLOYMENT_NAME",
+    "url"         : "MONGO_DB_URL",
+    "port"        : "MONDO_DB_PORT",
+    "username"    : "MONGO_DB_USER",
+    "password"    : "MONGO_DB_PASS",
     "secret"      : "RANDOM_CIPHER_KEY"
   }
 }
