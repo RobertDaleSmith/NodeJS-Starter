@@ -1,0 +1,18 @@
+{>"layouts/main_index"/}
+
+{<title}{title}{/title}
+
+{<html_body}
+
+	<form method="POST" enctype="multipart/form-input">
+	{#error}<h4>{.}</h4>{/error}
+		<input required placeholder="Username" name="user[username]" type="text"><br>
+		<input required placeholder="Email" name="user[email]" type="email">
+		<br><br>
+		<input required placeholder="Password" name="user[password]" type="password"><br>
+		<input required placeholder="Confirm Password" name="user[confirm_password]" type="password">
+		<br>
+		<br><button type="submit">SIGNUP</button>
+	</form>
+	<a href="/login">Already have an account?</a>
+{/html_body}
